@@ -31,7 +31,7 @@ public class Main {
         Contato c3 = new Contato();
 
         // * `ArrayList` é a implementação de "Listas Sequenciais" no Java.
-        ArrayList<Contato> agenda = new ArrayList<>();
+        ArrayList<Contato> agenda = new ArrayList<>(1);
 
         c1.nome = "Fulanim da Silva";
         c1.telefone = "99999999";
@@ -47,6 +47,7 @@ public class Main {
         agenda.add(c2);
         System.out.println("Nome: " + agenda.get(1).nome + ", Telefone: " +
                 agenda.get(1).telefone);
+        System.out.println(agenda.size());
 
         agenda.remove(c1);
         System.out.println("Nome: " + agenda.get(0).nome + ", Telefone: " +
