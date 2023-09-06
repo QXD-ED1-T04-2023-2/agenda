@@ -1,8 +1,9 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-class Contato {
+class Contato implements Comparable<Contato> {
     public String nome;
     public String telefone;
 
@@ -22,6 +23,11 @@ class Contato {
 
         return false;
     }
+
+    @Override
+    public int compareTo(Contato other) {
+        return this.nome.compareTo(other.nome);
+    }
 }
 
 public class Main {
@@ -31,40 +37,31 @@ public class Main {
         Contato c3 = new Contato();
 
         // * `ArrayList` é a implementação de "Listas Sequenciais" no Java.
-        ArrayList<Contato> agenda = new ArrayList<>(1);
+        ArrayList<Contato> agenda = new ArrayList<>();
 
         c1.nome = "Fulanim da Silva";
         c1.telefone = "99999999";
 
         c2.nome = "Sicranim dos Santos";
-        c2.telefone = "888888888";
+        c2.telefone = "988888888";
 
-        c3.nome = "Fulanim da Silva";
-        c3.telefone = "99999999";
+        c3.nome = "Beltranim Rodrigues";
+        c3.telefone = "977777777";
 
-        // * A implementação de `add` sempre usa o próximo índice disponível.
         agenda.add(c1);
         agenda.add(c2);
-        System.out.println("Nome: " + agenda.get(1).nome + ", Telefone: " +
-                agenda.get(1).telefone);
-        System.out.println(agenda.size());
+        agenda.add(c3);
 
-        agenda.remove(c1);
-        System.out.println("Nome: " + agenda.get(0).nome + ", Telefone: " +
-                agenda.get(0).telefone);
-
-        // * Este comando gera uma exceção, pois não temos como usar o índice 3
-        // * mantendo todas as propriedades que mencionamos.
-        // agenda.add(3, c1);
-        agenda.add(c1);
-
-        for (int i = 0; i < agenda.size(); i++) {
-            System.out.println("Nome: " + agenda.get(i).nome + ", Telefone: " +
-                    agenda.get(i).telefone);
+        for (Contato c : agenda) {
+            System.out.println(c.nome);
         }
 
-        // * `indexOf` busca pelo objeto passado, mas usando a noção que ensinamos
-        // * na implementação do método `equals`.
-        System.out.println("Fulanim está no índice: " + agenda.indexOf(c3));
+        Collections.sort(agenda);
+        System.out.println("------");
+
+        for (Contato c : agenda) {
+            System.out.println(c.nome);
+        }
+
     }
 }
